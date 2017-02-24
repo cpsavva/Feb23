@@ -6,6 +6,7 @@ var app = express();
 var PORT = 3000;
 
 // Data
+// ===========================================================
 var characters = [{
   routeName: "yoda",
   name: "Yoda",
@@ -21,30 +22,39 @@ var characters = [{
 }, {
   routeName: "obiwankenobi",
   name: "Obi Wan Kenobi",
-  role: "Jedi Knight",
-  age: 60,
+  role: "Jedi Master",
+  age: 55,
   forcePoints: 1350
 }];
 
 // Routes
 // ===========================================================
+
 app.get("/", function(req, res) {
   res.send("Welcome to the Star Wars Page!");
 });
 
-app.get("/darth", function(req, res){
-  console.log("DARTH IS HERE!!!!!");
-});
-
-app.get("/:characters", function(req, res) {
+// What does the question mark indicate?
+app.get("/api/:charaters?", function(req, res) {
+  // What does this code do?
   var chosen = req.params.characters;
 
-  // What does this log?
-  console.log(chosen);
+  if (chosen) {
+    console.log(chosen);
 
-  res.end();
+    // What does this code do?
+    for (var i = 0; i < characters.length; i++) {
+      if (chosen === characters[i].routeName) {
+        return res.json(characters[i]);
+      }
+    }
+
+    return res.send("No character found");
+  }
+
+  // What does this code do?
+  return res.json(characters);
 });
-
 
 // Listener
 // ===========================================================
