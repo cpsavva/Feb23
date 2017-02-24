@@ -56,7 +56,8 @@ app.get("/darthmaul", function(req, res) {
 // YOUR CODE GOES HERE
 
 app.get("/obi", function(req, res){
-  res.json(obi);
+
+  res.send("Luke, Use the Force!!!" + JSON.stringify(obi));
 });
 //
 
