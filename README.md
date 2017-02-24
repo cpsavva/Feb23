@@ -13,11 +13,5 @@ this will allow you to update the files without having to cut off the server
 
 
 
-
-app.get('/:a/:b/:c/:d/', function(req, res) {
-  console.log('im here!');
-  console.log(req.params);
-  console.log(req.query);
-});
-
-localhost:3000/aaa/bb/ccc/ddd?apikey=1234&searchTerm=cats
+node syntax "__dirname" 
+this means absolute directory
